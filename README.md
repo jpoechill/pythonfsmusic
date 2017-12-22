@@ -9,8 +9,6 @@ Oauth API by Google.
 
 Enjoy!
 
-123
-
 ## Screenshot
 
 ![Screenshot](/static/pythonfsmusic-ss.png)
