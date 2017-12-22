@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% block content %}
+<div id="categoryContainer" class="container" style="padding: 3.4rem 100px 0 0px;">
+  <div class="row">
+    <div class="col-md-12 animated fadeIn" style="padding: 0 33px 0 30px; ">
+      <!-- <h1>{{ category.upper() }}</h1> -->
+    </div>
+  </div>
+</div>
+<div class="container" style="padding: 0;">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- {% for x in artists %}
+        {{x}} -->
+        <!-- <div id="fade" class="animated fadeInUp fadeIn"
+          style="
+            width: {% if index == 3 or index == 4%} 50% {% else %} 33% {% endif %};
+            float: left; padding: 40px 0 0 0;">
+          <div class="text-center">
+            <a href="/{{ categoryshortname }}/{{ name.lower().replace(" ", "") }}">
+              <img src="{{image}}" class="drop-shadow" width="90%" height="200" alt="">
+            </a>
+          </div>
+          <div class="text-center" style="padding-top: 10px; font-weight: 800; font-size: 22px; color: rgba(0, 0, 0, .70);">
+            {{ shortname }}
+            <a href="/{{ categoryshortname }}/{{ name.lower().replace(" ", "") }}">{{ name.upper() }}</a>
+          </div>
+        </div> -->
+      <!-- {% endfor %} -->asdas
+      <div id="fade" class="animated fadeInUp fadeIn" style="float: left; width: 33%; padding: 40px 0 0 0;">
+        <div class="text-center">
+          <a href="./{{ categoryshortname }}/add">
+            <img src="/static/male-avatar.png" width="90%" height="200" alt="">
+          </a>
+        </div>
+        <div class="text-center" style="padding-top: 10px; font-weight: 800; font-size: 22px; color: rgba(0, 0, 0, .70);">
+          <!-- {{ shortname }} -->asdasdasdsads
+          <!-- <a href="./{{ categoryshortname }} }}">ADD ARTIST</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="container" style="background-color: fuchsia; padding: 3.4rem 100px 0 0px;">
+  <div class="row">
+    <div class="col-md-12" style="padding: 0 33px 0 30px; ">
+      <h1>NEW ARTIST</h1>
+    </div>
+  </div>
+</div>
+<div class="container" style="padding: 0;">
+  <div class="row">
+    <div class="col-md-12">
+      <form method="post"><br>
+          Category <br>
+          <select name="genre" class="form-control" required>
+            {% for genre in genres %}
+              {% if genre.name.lower().replace(' ', '') == category %}
+                <option value="{{ genre.name }}" selected>{{ genre.name }}</option>
+              {% else %}
+                <option value="{{ genre.name }}">{{ genre.name }}</option>
+              {% endif %}
+            {% endfor %}
+          </select><br>
+          <input type="text" type="url" name="name" class="form-control" placeholder="Artist name..." required><br>
+          Image <br>
+          <input type="text" name="image" class="form-control" placeholder="Image URL..." required><br>
+          Description <br>
+          <textarea name="description" class="form-control" rows="8" cols="80" placeholder="Enter a description..." required></textarea><br>
+          <button type="button" name="button" class="btn btn-secondary">CANCEL</button>
+          <button type="submit" name="button" class="btn btn-primary">SAVE</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

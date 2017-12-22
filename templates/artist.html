@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% block content %}
+<div id="categoryContainer" class="container" style="padding: 3.4rem 100px 0 0px;">
+  <div class="row">
+    <div class="col-md-12 animated fadeIn" style="padding: 0 33px 0 30px; ">
+      <h1>{{ category.upper() }}</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12" style="margin-top: 16px;">
+        <img src="{{artist.image}}" onError="this.src='/static/male-avatar.png'" width="100%" height="600px" alt=""> <br>
+        <span style="padding-top: 10px; font-weight: 800; font-size: 33px; color: rgba(0, 0, 0, .70);">
+          {{ artist.name.upper() }} <br>
+        </span>
+        {{ artist.description }}<br><br>
+        <a href="/{{ category }}/{{ shortname }}/edit" class="btn btn-secondary">EDIT</a> <a href="/{{ category }}/{{ shortname }}/delete" class="btn btn-secondary">DELETE</a>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript">
+  document.body.scrollTop = 86;
+</script>
+{% endblock %}

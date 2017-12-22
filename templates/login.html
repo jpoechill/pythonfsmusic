@@ -1,0 +1,63 @@
+{% extends "main.html" %}
+{% block content %}
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+</head>
+<div class="container" style="background-color: #21FF5D; padding: 3.4rem 100px 0 0px;">
+  <div class="row">
+    <div class="col-md-12" style="padding: 0 33px 0 30px; ">
+      <h1>LOGIN</h1>
+    </div>
+  </div>
+</div>
+<div class="container" style="padding-top: 20px;">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- GOOGLE PLUS SIGN IN-->
+      Please login to make changes. <br>
+      <div id="signInButton" style="padding-top: 5px;">
+        <span class="g-signin"
+          data-scope="openid email"
+          data-clientid="159562510185-ov1vc2pmeinl2j53pv7roeq0hojlpjh7.apps.googleusercontent.com"
+          data-redirecturi="postmessage"
+          data-accesstype="offline"
+          data-cookiepolicy="single_host_origin"
+          data-callback="signInCallback"
+          data-approvalprompt="force">
+        </span>
+      </div>
+      <!-- State: <br>
+      <input type="text" name="name" size="80" value="{{ STATE }}"><br><br>
+      Login session: <br>
+      <textarea name="name" rows="8" cols="80">{{ login_session }}</textarea> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script>
+        function signInCallback(authResult) {
+          if (authResult['code']) {
+            $('#signInButton').css({'display': 'none'});
+            $.ajax({
+              type: 'POST',
+              url: '/gconnect?state={{STATE}}',
+              processData: false,
+              data: authResult['code'],
+              contentType: 'application/octet-stream; charset=utf-8',
+              success: function(result) {
+                // Handle or verify the server response if necessary.
+                if (result) {
+                    window.location.href = "/";
+                } else if (authResult['error']) {
+                  console.log('There was an error: ' + authResult['error']);
+                } else {
+                  $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+                }
+              }
+            })
+          }
+        }
+      </script>
+      <!--END GOOGLE PLUS SIGN IN -->
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% block content %}
+<div id="categoryContainer" class="container" style="background-color: fuchsia; padding: 3.4rem 100px 0 0px;">
+  <div class="row">
+    <div class="col-md-12" style="padding: 0 33px 0 30px; ">
+      <h1>LATEST</h1>
+    </div>
+  </div>
+</div>
+<div class="container" style="padding: 0;">
+  <div class="row">
+    <div class="col-md-12">
+      {% for artist in artists %}
+        {% set index =loop.index0 %}
+        <div style="width: {% if index == 3 or index == 4%} 50% {% else %} 33% {% endif %};
+          float: left; padding: 40px 0 0 0;">
+          <div class="text-center">
+            <a href="./{{ artist.category.shortname }}/{{ artist.shortname }}"><img src="{{artist.image}}" onError="this.src='/static/male-avatar.png'" width="90%" height="200" alt=""></a>
+          </div>
+          <div class="text-center" style="padding-top: 10px; font-weight: 800; font-size: 22px; color: rgba(0, 0, 0, .70);">
+            {{ shortname }}
+            <a href="./{{ artist.category.shortname }}/{{ artist.shortname }}">{{ artist.name.upper() }}</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
